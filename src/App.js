@@ -2,6 +2,7 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [todoList, setTodoList] = useState([])
@@ -10,7 +11,7 @@ function App() {
 
   const addToList = (title) => {
     const newTodo = {
-      id: Date.now(),
+      id: uuidv4,
       title: title,
       status: false,
     }
@@ -18,13 +19,14 @@ function App() {
     return setTodoList((prev) => [...prev, newTodo])
   }
 
+  console.log(uuidv4())
 
   const handleClick = (event) => {
     return setNumber(prev => {
       let test = prev;
       test++
       // console.log(prev);
-      return test++;
+      return test;
     })
   };
   
