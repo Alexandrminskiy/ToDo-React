@@ -6,6 +6,8 @@ import { useState } from 'react'
 function App() {
   const [todoList, setTodoList] = useState([])
 
+  const [number, setNumber]=useState([])
+
   const addToList = (title) => {
     const newTodo = {
       id: Date.now(),
@@ -17,9 +19,21 @@ function App() {
   }
 
 
+  const handleClick = (event) => {
+    return setNumber(prev => {
+      let test = prev;
+      test++
+      // console.log(prev);
+      return test++;
+    })
+  };
+  
   return (
     <div className='container py-5'>
       <Header addToList={addToList} />
+      {number}
+
+      <button onClick={handleClick}>+1</button>
       <Main list={todoList} />
       <Footer changeTodo={setTodoList} />
     </div>
