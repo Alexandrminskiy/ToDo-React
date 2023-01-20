@@ -5,6 +5,8 @@ import { useState } from 'react'
 const Form = ({ addToList }) => {
   const [inputValue, setInputValue] = useState('') // '' - initialValue
 
+  console.log('Rerender Form');
+
   const handleSumbit = (event) => {
     event.preventDefault()
 
@@ -21,6 +23,7 @@ const Form = ({ addToList }) => {
           onChange={(event) => setInputValue(event.target.value)}
           type="text"
           className="form-control"
+          value={inputValue}
           name="onetodo" />
       </div>
       <button type="submit" className="btn btn-primary">Add</button>

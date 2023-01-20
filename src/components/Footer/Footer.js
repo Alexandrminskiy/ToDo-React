@@ -1,9 +1,12 @@
+import { render } from '@testing-library/react'
 import style from './style.module.css'
 
 export function Footer(props) {
   const handleClick = () => {
     props.changeTodo([])
   }
+
+console.log('Render footer')
 
   return (
     <footer>
