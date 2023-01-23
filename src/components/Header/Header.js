@@ -1,12 +1,11 @@
 // import style from './style.module.css'
 import { Form } from '../Form/Form'
 
-// props - объект с перевадаемыми значениями
-export function Header(props) {
+export function Header({ addToList }) {
 
   return (
     <header>
-      <Form addToList={props.addToList} />
+      <Form addToList={addToList} />
     </header>
   )
 }
