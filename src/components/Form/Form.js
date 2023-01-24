@@ -1,17 +1,11 @@
-import { useState } from 'react'
+import React, { useState } from "react"
 
-//props
-
-const Form = ({ addToList }) => {
+let Form = ({ addToList }) => {
   const [inputValue, setInputValue] = useState('') // '' - initialValue
   // const [feedback, setFeedback] = useState(false)
-
+  
   const handleSumbit = (event) => {
     event.preventDefault()
-
-    // if (!inputValue) {
-    // setFeedback('Форма пуста')
-    // }
 
     addToList(inputValue)
     setInputValue('')
@@ -28,11 +22,16 @@ const Form = ({ addToList }) => {
           name="onetodo"
           required
         />
-        <div class="invalid-feedback">Форма пуста</div>
+        <div className="invalid-feedback">Форма пуста</div>
       </div>
       <button type="submit" className="btn btn-primary">Add</button>
     </form>
   )
 }
+
+
+
+// eslint-disable-next-line no-const-assign
+Form = React.memo(Form)
 
 export { Form }

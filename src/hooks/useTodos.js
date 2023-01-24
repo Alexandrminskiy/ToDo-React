@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { TODO_KEY_IN_LS } from '../util/constants'
 
@@ -18,7 +18,7 @@ const useTodos = () => {
     localStorage.setItem(TODO_KEY_IN_LS, JSON.stringify(todoList))
   }, [todoList])
 
-  const addToList = (title) => {
+  const addToList = useCallback((title) => {
     const newTodo = {
       id: uuidv4(),
       title: title,
@@ -26,7 +26,7 @@ const useTodos = () => {
     }
 
     return setTodoList((prev) => [...prev, newTodo])
-  }
+  }, [])
 
   const deleteTodo = (id) => {
     setTodoList(prev => prev.filter((todo) => todo.id !== id))
@@ -42,9 +42,9 @@ const useTodos = () => {
     }))
   }
 
-  const deleteAll = () => {
+  const deleteAll = useCallback(() => {
     setTodoList([])
-  };
+  }, []);
 
   return {
     addToList,

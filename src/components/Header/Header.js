@@ -1,7 +1,8 @@
 // import style from './style.module.css'
 import { Form } from '../Form/Form'
+import React from 'react'
 
-export function Header({ addToList }) {
+let Header = ({ addToList }) => {
   return (
     <header>
       <Form addToList={addToList} />
@@ -9,3 +10,6 @@ export function Header({ addToList }) {
   )
 }
 
+Header = React.memo( Header)
+
+export {Header}

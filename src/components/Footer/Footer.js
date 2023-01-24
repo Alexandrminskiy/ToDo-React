@@ -1,10 +1,15 @@
+import React from 'react'
 import style from './style.module.css'
 
-export function Footer() {
+let Footer = ({ deleteAll }) => {
+  
   return (
     <footer>
-      FOOTER
+      <button onClick={() => deleteAll()} type="button" className="btn btn-danger mt-5">Delete</button>
     </footer>
   )
 }
 
+Footer = React.memo(Footer)
+
+export { Footer }
