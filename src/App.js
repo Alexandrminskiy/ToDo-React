@@ -31,7 +31,8 @@ function App() {
         todoList={todoList}
         deleteTodo={deleteTodo}
         updStatusTodo={updStatusTodo}
-        deleteAll={deleteAll} />
+        deleteAll={deleteAll}
+      />
 
       <Footer />
       {/* {number}  */}

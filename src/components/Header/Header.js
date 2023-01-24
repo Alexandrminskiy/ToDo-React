@@ -2,7 +2,6 @@
 import { Form } from '../Form/Form'
 
 export function Header({ addToList }) {
-
   return (
     <header>
       <Form addToList={addToList} />

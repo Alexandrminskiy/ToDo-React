@@ -4,27 +4,31 @@ import { useState } from 'react'
 
 const Form = ({ addToList }) => {
   const [inputValue, setInputValue] = useState('') // '' - initialValue
-
-  console.log('Rerender Form');
+  // const [feedback, setFeedback] = useState(false)
 
   const handleSumbit = (event) => {
     event.preventDefault()
 
-    addToList(inputValue)
+    // if (!inputValue) {
+    // setFeedback('Форма пуста')
+    // }
 
+    addToList(inputValue)
     setInputValue('')
-    // очистить форму
   }
 
   return (
-    <form onSubmit={event => handleSumbit(event)} className="d-flex flex-column  align-items-center">
+    <form onSubmit={event => handleSumbit(event)} className=" was-validated d-flex flex-column  align-items-center">
       <div className="mb-3">
         <input
           onChange={(event) => setInputValue(event.target.value)}
           type="text"
           className="form-control"
           value={inputValue}
-          name="onetodo" />
+          name="onetodo"
+          required
+        />
+        <div class="invalid-feedback">Форма пуста</div>
       </div>
       <button type="submit" className="btn btn-primary">Add</button>
     </form>
