@@ -38,6 +38,7 @@ const useTodos = () => {
         ...todo,
         status: !todo.status
       }
+
       return todo
     }))
   }

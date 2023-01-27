@@ -1,15 +1,29 @@
-// import style from './style.module.css'
 import { Form } from '../Form/Form'
-import React from 'react'
+import React, { useState } from 'react'
+import { Modal } from '../Modal/Modal';
 
-let Header = ({ addToList }) => {
+let Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
-    <header>
-      <Form addToList={addToList} />
+    <header className='d-flex justify-content-center'>
+      <button className='btn btn-primary' onClick={handleOpenModal}>Open modal</button>
+
+      <Modal closeModal={handleCloseModal} isOpen={isModalOpen}>
+        <Form closeModal={handleCloseModal} />
+      </Modal>
     </header>
   )
 }
 
-Header = React.memo( Header)
+Header = React.memo(Header);
 
-export {Header}
+export { Header }

@@ -1,18 +1,21 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from 'react'
+import { TodosHelpersContext } from '../../context/TodosContext'
 
-let Form = ({ addToList }) => {
-  const [inputValue, setInputValue] = useState('') // '' - initialValue
-  // const [feedback, setFeedback] = useState(false)
-  
+let Form = ({ closeModal }) => {
+  const [inputValue, setInputValue] = useState('')
+  const { addToList } = useContext(TodosHelpersContext)
+
+
   const handleSumbit = (event) => {
     event.preventDefault()
-
     addToList(inputValue)
     setInputValue('')
+    closeModal();
   }
 
   return (
-    <form onSubmit={event => handleSumbit(event)} className=" was-validated d-flex flex-column  align-items-center">
+    <form onSubmit={event => handleSumbit(event)}
+      className="was-validated d-flex flex-column align-items-center">
       <div className="mb-3">
         <input
           onChange={(event) => setInputValue(event.target.value)}
@@ -29,9 +32,6 @@ let Form = ({ addToList }) => {
   )
 }
 
-
-
-// eslint-disable-next-line no-const-assign
 Form = React.memo(Form)
 
 export { Form }
